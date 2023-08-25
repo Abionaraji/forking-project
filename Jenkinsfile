@@ -20,6 +20,11 @@ pipeline {
     jdk 'JDK'
   }
   stages {
+    stage('Git Checkout'){
+            steps{
+                git branch: 'main', url: 'https://github.com/Abionaraji/forking-project.git'
+            }
+        }
     stage('Build') {
       steps {
         sh 'mvn clean package'
