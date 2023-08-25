@@ -11,7 +11,7 @@ pipeline {
     //NEXUS_USER = "$NEXUS_CREDS_USR"
     //NEXUS_PASSWORD = "$Nexus-Token"
     //NEXUS_URL = "100.27.13.144:8081"
-    //NEXUS_REPOSITORY = "maven_project"
+    //NEXUS_REPOSITORY = "vpro-maven"
     //NEXUS_REPO_ID    = "maven_project"
     //ARTVERSION = "${env.BUILD_ID}"
   }
@@ -57,9 +57,9 @@ pipeline {
                 withCredentials([string(credentialsId: 'SonarQube-Token', variable: 'SONAR_TOKEN')]) {
                 sh """
                 mvn sonar:sonar \
-                -Dsonar.projectKey=cicd-pipeline-project \
-                -Dsonar.host.url=http://172.31.23.58:9000 \
-                -Dsonar.login=$SONAR_TOKEN
+                -Dsonar.projectKey=forking-pipeline \
+                -Dsonar.host.url=http://44.203.141.220:9000 \
+                -Dsonar.login=$sonar-jenkins
                 """
                 }
             }
