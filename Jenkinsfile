@@ -5,16 +5,6 @@ def COLOR_MAP = [
 ]
 pipeline {
   agent any
-  environment {
-    WORKSPACE = "${env.WORKSPACES}"
-    NEXUS_CREDENTIAL_ID = 'Nexus-Credential'
-    //NEXUS_USER = "$NEXUS_CREDS_USR"
-    //NEXUS_PASSWORD = "$Nexus-Token"
-    //NEXUS_URL = "100.27.13.144:8081"
-    //NEXUS_REPOSITORY = "vpro-maven"
-    //NEXUS_REPO_ID    = "maven_project"
-    //ARTVERSION = "${env.BUILD_ID}"
-  }
   tools {
     maven 'Maven'
     jdk 'JDK'
