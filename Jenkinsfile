@@ -11,7 +11,7 @@ pipeline {
   }
    environment {
     WORKSPACE = "${env.WORKSPACE}"
-    NEXUS_CREDENTIAL_ID = 'Nexus-Credential'
+    NEXUS_CREDENTIAL_ID = 'nexus-jenkins'
     //NEXUS_USER = "$admin"
     //NEXUS_PASSWORD = "$admin"
     //NEXUS_URL = "100.27.13.144:8081"
