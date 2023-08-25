@@ -45,11 +45,6 @@ pipeline {
         steps {
             sh 'mvn checkstyle:checkstyle'
         }
-        post {
-            success {
-                echo 'Generated Analysis Result'
-            }
-        }
     }
     stage('SonarQube Inspection') {
         steps {
