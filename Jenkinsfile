@@ -9,6 +9,16 @@ pipeline {
     maven 'Maven'
     jdk 'JDK'
   }
+   environment {
+    WORKSPACE = "${env.WORKSPACE}"
+    NEXUS_CREDENTIAL_ID = 'Nexus-Credential'
+    //NEXUS_USER = "$admin"
+    //NEXUS_PASSWORD = "$admin"
+    //NEXUS_URL = "100.27.13.144:8081"
+    //NEXUS_REPOSITORY = "vpro-maven"
+    //NEXUS_REPO_ID    = "maven_project"
+    //ARTVERSION = "${env.BUILD_ID}"
+  }
   stages {
     stage('Git Checkout'){
             steps{
