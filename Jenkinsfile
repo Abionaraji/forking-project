@@ -54,12 +54,12 @@ pipeline {
     stage('SonarQube Inspection') {
         steps {
             withSonarQubeEnv('SonarQube') { 
-                withCredentials([string(credentialsId: 'SonarQube-Token', variable: 'SONAR_TOKEN')]) {
+                withCredentials([string(credentialsId: 'personal-sonar', variable: 'personal-sonar')]) {
                 sh """
                 mvn sonar:sonar \
                 -Dsonar.projectKey=forking-pipeline \
                 -Dsonar.host.url=http://44.203.141.220:9000 \
-                -Dsonar.login=$sonar-jenkins
+                -Dsonar.login=$personal-sonar
                 """
                 }
             }
