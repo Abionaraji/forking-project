@@ -46,20 +46,18 @@ pipeline {
             sh 'mvn checkstyle:checkstyle'
         }
     }
-    stage('SonarQube Inspection') {
-        steps {
-            withSonarQubeEnv('SonarQube') { 
-                withCredentials([string(credentialsId: 'personal-sonar', variable: 'personal-sonar')]) {
-                sh """
-                mvn sonar:sonar \
-                -Dsonar.projectKey=forking-pipeline \
-                -Dsonar.host.url=http://44.203.141.220:9000 \
-                -Dsonar.login=$personal-sonar
-                """
+    stage('Sonar Scanner'){
+            steps{
+                withSonarQubeEnv(credentialsId: 'personal-sonar', installationName: 'sonarqube') {
+                    sh 'mvn sonar:sonar'
                 }
             }
         }
-    }
+        stage('Quality Gate'){
+            steps{
+                waitForQualityGate abortPipeline: false, credentialsId: 'personal-sonar'
+            }
+        }
     stage('SonarQube GateKeeper') {
         steps {
           timeout(time : 1, unit : 'HOURS'){
