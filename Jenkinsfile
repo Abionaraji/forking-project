@@ -53,11 +53,6 @@ pipeline {
                 }
             }
         }
-        stage('Quality Gate'){
-            steps{
-                waitForQualityGate abortPipeline: false, credentialsId: 'personal-sonar'
-            }
-        }
     stage('SonarQube GateKeeper') {
         steps {
           timeout(time : 1, unit : 'HOURS'){
